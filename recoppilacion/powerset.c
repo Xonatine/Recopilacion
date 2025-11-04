@@ -22,7 +22,7 @@ int check_int(char **str, int ac)
 }
 
 void solve(int *nums, int size, int target, int *subset, int index, int sub_size, int curr_sum){
-	if(index == size){
+	if(index == size){		
 		if(curr_sum == target){
 			for(int i =0; i < sub_size; i++){
 				printf("%d", subset[i]);

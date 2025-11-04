@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -17,7 +17,8 @@ void	print_error(char **dest, char **str, int free1, int free2)
 	exit(1);
 }
 
-char *ft_strjoin(char *s1, char *s2){
+char *ft_strjoin(char *s1, char *s2)
+{
 	char *join = malloc(strlen(s1) + strlen(s2) + 1);
 	if (!join)
 		return (NULL);
@@ -30,7 +31,8 @@ char *ft_strjoin(char *s1, char *s2){
 	return (result);
 }
 
-void ft_check_replace(char **str, char *arg){
+void ft_check_replace(char **str, char *arg)
+{
 	char	*new_str = malloc(strlen(*str) + 1);
 	size_t	len = strlen(arg);
 	if (!new_str)
@@ -60,7 +62,8 @@ void ft_check_replace(char **str, char *arg){
 	*str = new_str;
 }
 
-int main(int ac, char **av){
+int main(int ac, char **av)
+{
 	if(ac != 2 || av[1][0] == '\0')
 		return 1;
 	char *str = calloc(1, 1);

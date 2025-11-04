@@ -36,7 +36,7 @@ char    *get_next_line(int fd)
     i = 0;
     if (fd < 0 || BUFFER_SIZE < 1)
         return (NULL);
-    while (1337)
+    while (1)
     {
         if (b_pos >= b_read)
         {
@@ -57,9 +57,13 @@ char    *get_next_line(int fd)
 
 #include <fcntl.h>
 int main(){
-    int fd = open("file.txt", O_RDWR);
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
+    char *str;
+    int fd = open("ft_scanf.c", O_RDWR);
+    while (1)
+    {
+        str = get_next_line(fd);
+        if (!str)
+            break;
+        printf("%s", str);
+    }
 }
