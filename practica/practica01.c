@@ -24,35 +24,39 @@ char *ft_strjoin(char *s1, char *s2)
 	return (result);
 }
 
-void ft_replace(char **str, char *argv)
+void ft_replace(char *str, char *argv)
 {
-	char	*new_str = malloc(strlen(*str) + 1);
-	size_t	len = strlen(argv);
-	if (!new_str)
+	int i;
+	int j;
+	int len;
+
+	len = strlen(argv);
+	i = 0;
+	while(str[i] != '\0')
 	{
-		free(*str);
-		perror("Error: ");
-		exit(1);
-	}
-	char *src = *str;
-	char *dst = new_str;
-	while (*src)
-	{
-		size_t i = 0;
-		while (argv[i] && src[i] == argv[i])
-			i++;
-		if (i == len)
+		if (str[i] == argv[0])
 		{
-			for (size_t j = 0; j < len; j++)
-				*dst++ = '*';
-			src += len;
+			j = 0;
+			while (argv[j] != '\0')
+			{
+				if(str[i + j] !=  argv[j])
+					break;
+				j++;
+			}
+			if (j == len)
+			{
+				j = 0;
+				while (argv[j] != '\0')
+				{
+					str [i + j] = '*';
+					j++;
+				}
+				i += j;
+				continue;
+			}
 		}
-		else
-			*dst++ = *src++;
+		i++;
 	}
-	*dst = '\0';
-	free(*str);
-	*str = new_str;
 }
 
 int main(int argc, char **argv)
@@ -101,7 +105,7 @@ int main(int argc, char **argv)
 		str = temp;
 	}
 	free(dest);
-	ft_replace(&str, argv[1]);
+	ft_replace(str, argv[1]);
 	printf("%s", str);
 	free(str);
 	return(0);

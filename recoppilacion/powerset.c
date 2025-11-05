@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int check_int(char **str, int ac)
+int check_int(char **str, int argc)
 {
     int j = 1;
-    while (j < ac)
+    while (j < argc)
     {
         int i = 0;
         if (str[j][i] == '-' || str[j][i] == '+')
@@ -21,7 +21,8 @@ int check_int(char **str, int ac)
     return 1;
 }
 
-void solve(int *nums, int size, int target, int *subset, int index, int sub_size, int curr_sum){
+void solve(int *nums, int size, int target, int *subset, int index, int sub_size, int curr_sum)
+{
 	if(index == size){		
 		if(curr_sum == target){
 			for(int i =0; i < sub_size; i++){
@@ -38,15 +39,18 @@ void solve(int *nums, int size, int target, int *subset, int index, int sub_size
 	solve(nums, size, target, subset, index + 1, sub_size + 1, curr_sum + nums[index]);
 }
 
-int main(int ac, char **av){
-	if(ac > 3 || check_int(av, ac)){
-		int target = atoi(av[1]);
-		int *nums = malloc(sizeof(int) * (ac - 2));
-		for(int i= 0; i< ac -2; i++){
-			nums[i] = atoi(av[i+2]);
+int main(int argc, char **argv)
+{
+	if(argc > 3 || check_int(argv, argc))
+	{
+		int target = atoi(argv[1]);
+		int *nums = malloc(sizeof(int) * (argc - 2));
+		for(int i= 0; i< argc -2; i++)
+		{
+			nums[i] = atoi(argv[i+2]);
 		}
-		int subset[(ac -2)];
-		solve(nums, (ac -2), target, subset, 0, 0, 0);
+		int subset[(argc -2)];
+		solve(nums, (argc -2), target, subset, 0, 0, 0);
 		free(nums);	
 		return 0;
 	}
