@@ -59,17 +59,17 @@ void generate(char *str, char *result, int *used, int len, int depth)
     }
 }
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-	if(ac != 2 || check_dup(av[1]))
+	if(argc != 2 || check_dup(argv[1]))
 		return 1;
-	int len = ft_strlen(av[1]);
+	int len = ft_strlen(argv[1]);
 	char *result = malloc(len + 1);
     int *used = calloc(len, sizeof(int));
 	if(!result || !used)
 		return 1;
-	sorted(av[1]);
-    generate(av[1], result, used, len, 0);
+	sorted(argv[1]);
+    generate(argv[1], result, used, len, 0);
     free(result);
     free(used);
 	return 0;

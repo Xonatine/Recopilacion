@@ -7,9 +7,7 @@ int board_size;
 
 void print_solution(void)
 {
-    int i;
-    
-    for (i = 0; i < board_size; i++)
+    for (int i = 0; i < board_size; i++)
     {
         fprintf(stdout, "%d", board[i]);
         if (i < board_size - 1)
@@ -54,14 +52,14 @@ void solve(int col)
 	}
 }
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-	if (ac != 2)
+	if (argc != 2)
 	{
 		write(1, "\n", 1);
 		return (0);
 	}
-	int n = atoi(av[1]);
+	int n = atoi(argv[1]);
 	if (n <= 3)
 	{
 		write(1, "\n", 1);

@@ -18,14 +18,17 @@ int check_int(char **str, int argc)
         }
         j++;
     }
-    return 1;
+    return (1);
 }
 
 void solve(int *nums, int size, int target, int *subset, int index, int sub_size, int curr_sum)
 {
-	if(index == size){		
-		if(curr_sum == target){
-			for(int i =0; i < sub_size; i++){
+	if(index == size)
+	{		
+		if(curr_sum == target)
+		{
+			for(int i =0; i < sub_size; i++)
+			{
 				printf("%d", subset[i]);
 				if(i != sub_size - 1)
 					printf(" ");
@@ -52,7 +55,7 @@ int main(int argc, char **argv)
 		int subset[(argc -2)];
 		solve(nums, (argc -2), target, subset, 0, 0, 0);
 		free(nums);	
-		return 0;
+		return (0);
 	}
-	return 1;
+	return (1);
 }

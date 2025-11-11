@@ -2,7 +2,8 @@
 
 int is_val(char *str)
 {
-    int opened = 0, closed = 0;
+    int opened = 0;
+    int closed = 0;
 
     for (int i = 0; str[i]; i++)
     {
@@ -16,7 +17,7 @@ int is_val(char *str)
                 closed++;
         }
     }
-    return opened + closed;
+    return (opened + closed);
 }
 
 void    rip(char *str, int must_fic, int n_fix, int pos)
@@ -38,8 +39,8 @@ void    rip(char *str, int must_fic, int n_fix, int pos)
     }
 }
 
-int main(int ac, char **ag)
+int main(int argc, char **argg)
 {
-    int m_fix = is_val(ag[1]);
-    rip(ag[1], m_fix, 0, 0);
+    int m_fix = is_val(argg[1]);
+    rip(argg[1], m_fix, 0, 0);
 }
