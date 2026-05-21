@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   picoshell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: frlorenz <frlorenz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:28:03 by dgargant          #+#    #+#             */
-/*   Updated: 2025/10/30 15:06:17 by dgargant         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:23:14 by frlorenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	picoshell(char **cmds[])
 	int fd[2];
 	int last_fd =  -1;
 	int i = 0;
+	int res = 0;
 	int status;
+	
 	while (cmds[i])
 	{
 		if (cmds[i + 1] && pipe(fd) == -1)
@@ -64,7 +66,6 @@ int	picoshell(char **cmds[])
 		}
 		i++;
 	}
-	int res = 0;
 	while (wait(&status) > 0)
 	{
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
@@ -72,12 +73,5 @@ int	picoshell(char **cmds[])
 		if (WIFEXITED(status))
 			res = 1;
 	}
-	/*
-	   while(wait(NULL) > 0)
-    	{ 
-    		;
-    	}
-    return(0);
-	*/
 	return (res);
 }
